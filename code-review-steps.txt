@@ -1,0 +1,37 @@
+Devops engineer Code review
+
+Objective
+
+The goal of this test is to evaluate your ability to analyse existing Terraform code for an AWS infrastructure. You will assess the code’s formatting, structure, adherence to best practices, and propose improvements. This will give us insight into your technical skills, attention to detail, and ability to work with existing systems.
+
+Instructions
+
+Code Review Task
+
+You have been provided with a Terraform file that provisions AWS resources for a VPC setup. Your task is to:
+
+· Review the provided code for correctness, clarity, and organization.
+
+· Identify potential improvements in areas such as:
+
+o Formatting and readability.
+
+o Modularization and reusability.
+
+o Security and compliance with AWS best practices.
+
+o Resource naming conventions.
+
+o Variable usage and input validation.
+
+Deliverables
+
+· Provide a written report in Markdown or a text document that includes:
+
+o General Observations: Your overall impression of the code and any strengths/weaknesses you noticed.
+
+o Issues Identified: A list of specific issues or areas for improvement, with explanations.
+
+o Suggested Improvements: Proposals for refactoring or optimizing the code.
+
+· Annotate the code (e.g., with comments or inline suggestions) to demonstrate your analysis.
