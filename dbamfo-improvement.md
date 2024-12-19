@@ -5,6 +5,7 @@ By following  below recommendation the terraform code will become more **modular
 Define input variables for configurable attributes:
 
 ### Example:
+```hcl
 variable "region" {
   description = "AWS region"
   type        =  string    
@@ -16,6 +17,7 @@ variable "ami_id" {
   type        = string
   default     = "ami-0c02fb55956c7d316" # Amazon Linux 2
 }
+```
 
 ## 2. **Modularize the Code**
 Break the code into reusable modules:
@@ -25,6 +27,7 @@ ECS Module: For ECS clusters and instances.
 ASG Module: For auto-scaling group and launch configuration.
 
 example:
+```hcl
 module "vpc" {
   source  = "./modules/vpc"
   name    = var.env_name
@@ -35,7 +38,7 @@ module "vpc" {
     Project     = var.project_name
   }
 }
-
+```
 
 ## 3. **Improve Security**
 Restrict security group ingress to specific IP ranges/subnets.
@@ -45,13 +48,14 @@ Use encryption where applicable (e.g.,to secure S3 access for statefiles).
 Adopt a consistent naming convention:
 
 Use variables for prefixes (e.g., ${var.env_name}-vpc).
-
+```hcl
 tags = {
   Name = "${var.env_name}-main-vpc"
 }
+```
 ## 5. **Enforce Input Validation**
 Validate variables to avoid misconfiguration:
-
+```hcl
 variable "cidr_block" {
   type        = string
   description = "CIDR block for the VPC"
@@ -60,14 +64,16 @@ variable "cidr_block" {
     error_message = "Must be a valid CIDR block"
   }
 }
+```
 ## 6. **Add Output Values**
 Expose  resource attributes using outputs if require:
 
 example
+```hcl
 output "vpc_id" {
   value = aws_vpc.main_vpc.id
 }
-
+```
 ## 7. **Format and Lint the Code to analyse terraform code**
 Use built-in terraform fmt to standardize formatting and terraform validate to validate config file.
 Install tflint, checkov or tfsec
@@ -79,7 +85,7 @@ Terraform Validate: Ensures that the code conforms to Terraform's syntax and bas
 ## 8. **Use Remote State**
 Use Terraform remote state to manage state securely:
 
-
+```hcl
 terraform {
   backend "s3" {
     bucket         = "techtest-terraform-state"
@@ -89,7 +95,7 @@ terraform {
     encrypt        = true
   }
 }
-
+```
 
  
 
